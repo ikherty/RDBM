@@ -1,0 +1,43 @@
+\&
+\?
+\dt
+\c petrenko 
+\dt
+\
+\l
+\d information_schema.information_schema_catalog_name 
+create table;
+create table
+\dt
+\l
+create table courses
+create table courses(c_no text PRIMARY KEY, title text, hourse integer);
+\dt
+\dt+
+create table courses(c_no text PRIMARY KEY, title text, hourse integer);
+\dt
+\dt+
+insert INTO courses values ('cs301', 'Базы данных', 30), ('cs305', 'Сети ЭВМ', 60);
+\dt+
+\d courses
+create table students(s_id integer PRIMARY KEY, name text, start_year integer);
+insert INTO students values (1234, 'Анна', 2016), (1235, 'Олег', 2016), (1236, 'Джон Смит', 2017);
+\d students
+\dt+ students 
+select * FROM students 
+select * FROM students;
+SELECT * FROM students;
+create table exams(s_id integer PEFERENCES students(s_id), c_no text PEFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+create table exams(s_id integer PEFERENCES students(s_id), c_no text PEFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+create table exams(s_id integer PREFERENCES students(s_id), c_no text PREFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+create table exams(s_id integer REFERENCES students(s_id), c_no text REFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+insert INTO exams values (1234, 'cs301', 5), (1235, 'cs301', 5), (1234, 'cs305т', 5), (1236, 'cs305', 4);
+insert INTO exams values (1234, 'cs301', 5), (1235, 'cs301', 5), (1234, 'cs305', 5), (1236, 'cs305', 4);
+\d exams 
+SELECT * FROM exams;
+SELECT name, start_year FROM exams;
+SELECT name, start_year FROM students;
+SELECT start_year FROM students;
+\h
+\?
+\s ~/hist.txt
