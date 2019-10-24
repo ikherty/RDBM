@@ -1,0 +1,9 @@
+petrenko@ismag07l:~> psql 
+psql (10.6)
+Введите "help", чтобы получить справку.
+petrenko=# create database test;
+CREATE DATABASE
+petrenko=# \c test
+Вы подключены к базе данных "test" как пользователь "petrenko".
+-- это коммент
+--далее копируем содержимое креате.тхт и популяте.тхт
