@@ -58,3 +58,10 @@ petrenko=# select name, score from students s left join exams e on s.s_id=e.s_id
  Олег |     5
 (2 строки)
 
+petrenko=# select name, (select score from exams where students.s_id=exams.s_id and c_no='cs301') from students;
+   name    | score 
+-----------+-------
+ Анна      |     5
+ Олег      |     5
+ Джон Смит |      
+(3 строки)
