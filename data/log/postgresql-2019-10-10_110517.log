@@ -1,0 +1,29 @@
+2019-10-10 11:05:17.568 MSK   [2021]СООБЩЕНИЕ:  система БД была выключена: 2019-10-10 11:00:03 MSK
+2019-10-10 11:05:17.661 MSK   [2019]СООБЩЕНИЕ:  система БД готова принимать подключения
+2019-10-10 11:23:37.738 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: ";") (символ 13)
+2019-10-10 11:23:37.738 MSK petrenko petrenko [2135]ОПЕРАТОР:  create table;
+2019-10-10 11:26:16.041 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "create") (символ 14)
+2019-10-10 11:26:16.041 MSK petrenko petrenko [2135]ОПЕРАТОР:  create table
+	create table courses
+	create table courses(c_no text PRIMARY KEY, title text, hourse integer);
+2019-10-10 11:44:26.403 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "select") (символ 25)
+2019-10-10 11:44:26.403 MSK petrenko petrenko [2135]ОПЕРАТОР:  select * FROM students 
+	select * FROM students;
+2019-10-10 11:47:47.161 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "PEFERENCES") (символ 33)
+2019-10-10 11:47:47.161 MSK petrenko petrenko [2135]ОПЕРАТОР:  create table exams(s_id integer PEFERENCES students(s_id), c_no text PEFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+2019-10-10 11:48:04.289 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "PEFERENCES") (символ 33)
+2019-10-10 11:48:04.289 MSK petrenko petrenko [2135]ОПЕРАТОР:  create table exams(s_id integer PEFERENCES students(s_id), c_no text PEFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+2019-10-10 11:49:25.024 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "PREFERENCES") (символ 33)
+2019-10-10 11:49:25.024 MSK petrenko petrenko [2135]ОПЕРАТОР:  create table exams(s_id integer PREFERENCES students(s_id), c_no text PREFERENCES courses(c_no), score integer, CONSTRAINT pk PRIMARY KEY(s_id, c_no));
+2019-10-10 11:54:09.501 MSK petrenko petrenko [2135]ОШИБКА:  INSERT или UPDATE в таблице "exams" нарушает ограничение внешнего ключа "exams_c_no_fkey"
+2019-10-10 11:54:09.501 MSK petrenko petrenko [2135]ПОДРОБНОСТИ:  Ключ (c_no)=(cs305т) отсутствует в таблице "courses".
+2019-10-10 11:54:09.501 MSK petrenko petrenko [2135]ОПЕРАТОР:  insert INTO exams values (1234, 'cs301', 5), (1235, 'cs301', 5), (1234, 'cs305т', 5), (1236, 'cs305', 4);
+2019-10-10 11:57:02.290 MSK petrenko petrenko [2135]ОШИБКА:  столбец "name" не существует (символ 8)
+2019-10-10 11:57:02.290 MSK petrenko petrenko [2135]ОПЕРАТОР:  SELECT name, start_year FROM exams;
+2019-10-10 12:07:46.194 MSK petrenko petrenko [2135]ОШИБКА:  ошибка синтаксиса (примерное положение: "where") (символ 1)
+2019-10-10 12:07:46.194 MSK petrenko petrenko [2135]ОПЕРАТОР:  where(start_year<>2016) AND (name!='Джон');
+2019-10-10 12:20:53.378 MSK   [2019]СООБЩЕНИЕ:  получен запрос на быстрое выключение
+2019-10-10 12:20:53.423 MSK   [2019]СООБЩЕНИЕ:  прерывание всех активных транзакций
+2019-10-10 12:20:53.424 MSK   [2019]СООБЩЕНИЕ:  рабочий процесс: logical replication launcher (PID 2027) завершился с кодом выхода 1
+2019-10-10 12:20:53.425 MSK   [2022]СООБЩЕНИЕ:  выключение
+2019-10-10 12:20:53.785 MSK   [2019]СООБЩЕНИЕ:  система БД выключена

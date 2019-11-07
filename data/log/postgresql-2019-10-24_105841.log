@@ -1,0 +1,21 @@
+2019-10-24 10:58:41.801 MSK   [1966]СООБЩЕНИЕ:  система БД была выключена: 2019-10-10 12:20:53 MSK
+2019-10-24 10:58:41.886 MSK   [1964]СООБЩЕНИЕ:  система БД готова принимать подключения
+2019-10-24 11:08:29.945 MSK petrenko petrenko [2355]ОШИБКА:  ошибка синтаксиса (примерное положение: "create") (символ 18)
+2019-10-24 11:08:29.945 MSK petrenko petrenko [2355]ОПЕРАТОР:  create database 
+	create database test;
+2019-10-24 11:13:28.373 MSK petrenko petrenko [2355]ОШИБКА:  ошибка синтаксиса (примерное положение: "c") (символ 1)
+2019-10-24 11:13:28.373 MSK petrenko petrenko [2355]ОПЕРАТОР:  c test;
+2019-10-24 11:47:39.933 MSK petrenko petrenko [2969]ОШИБКА:  столбец "s_i" не существует (символ 45)
+2019-10-24 11:47:39.933 MSK petrenko petrenko [2969]ПОДСКАЗКА:  Возможно, предполагалась ссылка на столбец "students.s_id".
+2019-10-24 11:47:39.933 MSK petrenko petrenko [2969]ОПЕРАТОР:  select name, start_year from students where s_i in (select s_id from exams where score=5);
+2019-10-24 11:56:58.270 MSK petrenko petrenko [2969]ОШИБКА:  ошибка синтаксиса (примерное положение: "AS") (символ 45)
+2019-10-24 11:56:58.270 MSK petrenko petrenko [2969]ОПЕРАТОР:  select s.name, ce.score from students where AS s join (select exams.* from courses, exams where courses.c_no=exams.c_no and courses.title='Базы данных') AS ce;
+2019-10-24 11:57:20.294 MSK petrenko petrenko [2969]ОШИБКА:  ошибка синтаксиса (примерное положение: ";") (символ 153)
+2019-10-24 11:57:20.294 MSK petrenko petrenko [2969]ОПЕРАТОР:  select s.name, ce.score from students AS s join (select exams.* from courses, exams where courses.c_no=exams.c_no and courses.title='Базы данных') AS ce;
+2019-10-24 12:12:26.155 MSK petrenko petrenko [2969]ОШИБКА:  ошибка синтаксиса (примерное положение: "start_year") (символ 23)
+2019-10-24 12:12:26.155 MSK petrenko petrenko [2969]ОПЕРАТОР:  select count (distins start_year) from students;
+2019-10-24 12:16:56.897 MSK   [1964]СООБЩЕНИЕ:  получен запрос на быстрое выключение
+2019-10-24 12:16:56.934 MSK   [1964]СООБЩЕНИЕ:  прерывание всех активных транзакций
+2019-10-24 12:16:56.935 MSK   [1964]СООБЩЕНИЕ:  рабочий процесс: logical replication launcher (PID 1972) завершился с кодом выхода 1
+2019-10-24 12:16:56.935 MSK   [1967]СООБЩЕНИЕ:  выключение
+2019-10-24 12:16:57.238 MSK   [1964]СООБЩЕНИЕ:  система БД выключена

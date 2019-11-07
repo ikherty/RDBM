@@ -1,0 +1,60 @@
+ petrenko@ismag07l:~> psql 
+psql (10.6)
+Введите "help", чтобы получить справку.
+
+petrenko=# \c petrenko 
+Вы подключены к базе данных "petrenko" как пользователь "petrenko".
+
+petrenko=# select count (*)  FROM exams;
+ count 
+-------
+     4
+(1 строка)
+                                              ^
+petrenko=# select count (*)  FROM exams where exams.c_no='cs301';
+ count 
+-------
+     2
+(1 строка)
+
+petrenko=# SELECT * FROM courses, exams;
+ c_no  |    title    | hourse | s_id | c_no  | score 
+-------+-------------+--------+------+-------+-------
+ cs301 | Базы данных |     30 | 1234 | cs301 |     5
+ cs305 | Сети ЭВМ    |     60 | 1234 | cs301 |     5
+ cs301 | Базы данных |     30 | 1235 | cs301 |     5
+ cs305 | Сети ЭВМ    |     60 | 1235 | cs301 |     5
+ cs301 | Базы данных |     30 | 1234 | cs305 |     5
+ cs305 | Сети ЭВМ    |     60 | 1234 | cs305 |     5
+ cs301 | Базы данных |     30 | 1236 | cs305 |     4
+ cs305 | Сети ЭВМ    |     60 | 1236 | cs305 |     4
+(8 строк)
+
+petrenko=# select count (*)  FROM exams, courses  where exams.c_no=courses.c_no AND exams.c_no='cs301';
+ count 
+-------
+     2
+(1 строка)
+
+petrenko=# select s.name, ce.score from students AS s join (select exams.* from courses, exams where courses.c_no=exams.c_no and courses.title='Базы данных') AS ce on s.s_id=ce.s_id;
+ name | score 
+------+-------
+ Анна |     5
+ Олег |     5
+(2 строки)
+
+petrenko=# select name, score from students s left join exams e on s.s_id=e.s_id and c_no='cs301';
+   name    | score 
+-----------+-------
+ Анна      |     5
+ Олег      |     5
+ Джон Смит |      
+(3 строки)
+
+petrenko=# select name, score from students s left join exams e on s.s_id=e.s_id where c_no='cs301';
+ name | score 
+------+-------
+ Анна |     5
+ Олег |     5
+(2 строки)
+

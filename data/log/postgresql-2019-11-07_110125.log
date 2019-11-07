@@ -1,0 +1,75 @@
+2019-11-07 11:01:25.585 MSK   [2016]СООБЩЕНИЕ:  система БД была выключена: 2019-10-24 12:16:57 MSK
+2019-11-07 11:01:25.678 MSK   [2014]СООБЩЕНИЕ:  система БД готова принимать подключения
+2019-11-07 11:03:06.976 MSK test petrenko [2095]ОШИБКА:  отношение "students" не существует (символ 15)
+2019-11-07 11:03:06.976 MSK test petrenko [2095]ОПЕРАТОР:  select * from students;
+2019-11-07 11:03:09.816 MSK test petrenko [2095]ОШИБКА:  отношение "student" не существует (символ 15)
+2019-11-07 11:03:09.816 MSK test petrenko [2095]ОПЕРАТОР:  select * from student;
+2019-11-07 11:03:35.304 MSK test petrenko [2095]ОШИБКА:  отношение "students" не существует (символ 15)
+2019-11-07 11:03:35.304 MSK test petrenko [2095]ОПЕРАТОР:  select * from students;
+2019-11-07 11:24:25.784 MSK petrenko petrenko [2218]ОШИБКА:  столбец "title" не существует (символ 36)
+2019-11-07 11:24:25.784 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams where title="Базы данных";
+2019-11-07 11:26:42.815 MSK petrenko petrenko [2218]ОШИБКА:  столбец "cs301" не существует (символ 47)
+2019-11-07 11:26:42.815 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams where exams.c_no=cs301;
+2019-11-07 11:32:18.619 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "courses") (символ 32)
+2019-11-07 11:32:18.619 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e courses AS c where e.c_no=c.c_no AND exams.c_no='cs301';
+2019-11-07 11:33:07.019 MSK petrenko petrenko [2218]ОШИБКА:  таблица "e" отсутствует в предложении FROM (символ 50)
+2019-11-07 11:33:07.019 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams, courses AS c where e.c_no=c.c_no AND exams.c_no='cs301';
+2019-11-07 11:33:43.290 MSK petrenko petrenko [2218]ОШИБКА:  таблица "e" отсутствует в предложении FROM (символ 50)
+2019-11-07 11:33:43.290 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams, courses AS c where e.c_no=c.c_no;
+2019-11-07 11:33:51.578 MSK petrenko petrenko [2218]ОШИБКА:  таблица "e" отсутствует в предложении FROM (символ 46)
+2019-11-07 11:33:51.578 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams, courses  where e.c_no=c.c_no;
+2019-11-07 11:36:49.410 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "count") (символ 1)
+2019-11-07 11:36:49.410 MSK petrenko petrenko [2218]ОПЕРАТОР:  count (*)  FROM exams, courses AS c where e.c_no=c.c_no;
+2019-11-07 11:36:52.098 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:52.098 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	ko=# select count (*)  FROM exams, courses AS c where e.c_no=c.c_no AND exams.c_no='cs301';
+2019-11-07 11:36:52.099 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:52.099 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	                                                           ^
+	petrenko=# select count (*)  FROM exams, courses AS c where e.c_no=c.c_no;
+2019-11-07 11:36:52.101 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:52.101 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	                                                           ^
+	petrenko=# select count (*)  FROM exams, courses  where e.c_no=c.c_no;
+2019-11-07 11:36:52.101 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:52.101 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	СТРОКА 1: select count (*)  FROM exams, courses  where e.c_no=c.c_no;
+2019-11-07 11:36:52.102 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "^") (символ 1)
+2019-11-07 11:36:52.102 MSK petrenko petrenko [2218]ОПЕРАТОР:  ^
+	petrenko=# select count (*)  FROM exams, courses  where exams.c_no=courses.c_no;
+2019-11-07 11:36:55.435 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "count") (символ 1)
+2019-11-07 11:36:55.435 MSK petrenko petrenko [2218]ОПЕРАТОР:  count 
+	
+	     4
+	ица "e" отсутствует в предложении FROM
+	petrenko-# СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	petrenko-# ko=# select count (*)  FROM exams, courses AS c where e.c_no=c.c_no AND exams.c_no='cs301';
+2019-11-07 11:36:55.437 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:55.437 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА")
+	СТРОКА 1: ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	          ^
+	petrenko=# ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	petrenko-# СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	petrenko-#                                                            ^
+	petrenko-# petrenko=# select count (*)  FROM exams, courses AS c where e.c_no=c.c_no;
+2019-11-07 11:36:55.439 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА") (символ 1)
+2019-11-07 11:36:55.439 MSK petrenko petrenko [2218]ОПЕРАТОР:  ОШИБКА:  ошибка синтаксиса (примерное положение: "ОШИБКА")
+	СТРОКА 1: ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	          ^
+	petrenko=# ОШИБКА:  таблица "e" отсутствует в предложении FROM
+	petrenko-# СТРОКА 1: select count (*)  FROM exams, courses AS c where e.c_no=c.c_...
+	petrenko-#                                                            ^
+	petrenko-# petrenko=# select count (*)  FROM exams, courses  where e.c_no=c.c_no;
+2019-11-07 11:39:02.742 MSK petrenko petrenko [2218]ОШИБКА:  столбец "title" не существует (символ 39)
+2019-11-07 11:39:02.742 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e  where title='Базы данных';
+2019-11-07 11:44:06.435 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: ";") (символ 65)
+2019-11-07 11:44:06.435 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e where (select title  from courses;)='Базы данных';
+2019-11-07 11:46:02.369 MSK petrenko petrenko [2218]ОШИБКА:  ошибка синтаксиса (примерное положение: ";") (символ 82)
+2019-11-07 11:46:02.369 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e where 'Базы данных' in (select title  from courses;);
+2019-11-07 11:46:40.817 MSK petrenko petrenko [2218]ОШИБКА:  подзапрос в выражении вернул больше одной строки
+2019-11-07 11:46:40.817 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e where (select title  from courses)='Базы данных';
+2019-11-07 12:01:07.758 MSK petrenko petrenko [2218]ОШИБКА:  аргумент конструкции WHERE должен иметь тип boolean, а не integer (символ 34)
+2019-11-07 12:01:07.758 MSK petrenko petrenko [2218]ОПЕРАТОР:  select name from students where  (select score from exams where exams.s_id=students.s_id and exams.c_no='cs301');
