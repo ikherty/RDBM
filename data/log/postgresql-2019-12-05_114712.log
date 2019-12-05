@@ -4,3 +4,6 @@
 2019-12-05 11:58:05.878 MSK test petrenko [2057]ОПЕРАТОР:  select from cust.name, c.cust_id, count(*) from customers c left join orders o on c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
 2019-12-05 11:58:37.038 MSK test petrenko [2057]ОШИБКА:  таблица "cust" отсутствует в предложении FROM (символ 8)
 2019-12-05 11:58:37.038 MSK test petrenko [2057]ОПЕРАТОР:  select cust.name, c.cust_id, count(*) from customers c left join orders o on c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
+2019-12-05 12:16:37.073 MSK test petrenko [2057]ОШИБКА:  оператор не уникален: ~ unknown (символ 62)
+2019-12-05 12:16:37.073 MSK test petrenko [2057]ПОДСКАЗКА:  Не удалось выбрать лучшую кандидатуру оператора. Возможно, вам следует добавить явные приведения типов.
+2019-12-05 12:16:37.073 MSK test petrenko [2057]ОПЕРАТОР:  select prod_id, prod_name from products where prod_name like ~'bear';

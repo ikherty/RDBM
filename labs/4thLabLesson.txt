@@ -55,7 +55,7 @@ test=# select all cust_name, c.cust_id, count(*) from customers c, orders o wher
  Village Toys                                       | 1000000001 |     2
 (4 строки)
 
-test=# select  cust_name, c.cust_id, count(*) from customers c, orders o where c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
+test=# select cust_name, c.cust_id, count(*) from customers c, orders o where c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
                      cust_name                      |  cust_id   | count 
 ----------------------------------------------------+------------+-------
  Village Toys                                       | 1000000001 |     2
@@ -74,4 +74,41 @@ test=# select cust_name, c.cust_id, count(*) from customers c left join orders o
  Fun4All                                            | 1000000004 |     1
 (5 строк)
 
+test=# select cust_name, c.cust_id, count(order_num) from customers c left join orders o on c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
+                     cust_name                      |  cust_id   | count 
+----------------------------------------------------+------------+-------
+ Village Toys                                       | 1000000001 |     2
+ Fun4All                                            | 1000000003 |     1
+ The Toy Store                                      | 1000000005 |     1
+ Fun4All                                            | 1000000004 |     1
+ Kids Place                                         | 1000000002 |     0
+(5 строк)
 
+
+test=# select order_num, sum(item_price*quantity) from orderitems group by order_num order by 2 desc;
+ order_num |   sum   
+-----------+---------
+     20009 | 1867.50
+     20007 | 1696.00
+     20005 | 1648.00
+     20006 |  329.60
+     20008 |  189.60
+(5 строк)
+
+test=# select prod_id, prod_name from products where prod_name like '%bear%';
+  prod_id   |                                                                                                                            prod_name                                                                                                                            
+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ BR01       | 8 inch teddy bear                                                                                                                                                                                                                                              
+ BR02       | 12 inch teddy bear                                                                                                                                                                                                                                             
+ BR03       | 18 inch teddy bear                                                                                                                                                                                                                                             
+(3 строки)
+
+test=# select prod_id, prod_name from products where prod_name ~'bear';
+  prod_id   |                                                                                                                            prod_name                                                                                                                            
+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ BR01       | 8 inch teddy bear                                                                                                                                                                                                                                              
+ BR02       | 12 inch teddy bear                                                                                                                                                                                                                                             
+ BR03       | 18 inch teddy bear                                                                                                                                                                                                                                             
+(3 строки)
+
+##ДЗ: вывести список клиентов, которые в 2012 купили больше 50 игрушек br01
