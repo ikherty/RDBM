@@ -1,1 +1,1 @@
-/usr/lib/postgresql10/bin/postgres "-D" "/home/petrenko/data"
+/usr/lib/postgresql10/bin/postgres "-D" "./data"

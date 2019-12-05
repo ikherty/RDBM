@@ -73,3 +73,8 @@
 2019-11-07 11:46:40.817 MSK petrenko petrenko [2218]ОПЕРАТОР:  select count (*)  FROM exams e where (select title  from courses)='Базы данных';
 2019-11-07 12:01:07.758 MSK petrenko petrenko [2218]ОШИБКА:  аргумент конструкции WHERE должен иметь тип boolean, а не integer (символ 34)
 2019-11-07 12:01:07.758 MSK petrenko petrenko [2218]ОПЕРАТОР:  select name from students where  (select score from exams where exams.s_id=students.s_id and exams.c_no='cs301');
+2019-11-07 12:15:15.230 MSK   [2014]СООБЩЕНИЕ:  получен запрос на быстрое выключение
+2019-11-07 12:15:15.257 MSK   [2014]СООБЩЕНИЕ:  прерывание всех активных транзакций
+2019-11-07 12:15:15.258 MSK   [2014]СООБЩЕНИЕ:  рабочий процесс: logical replication launcher (PID 2022) завершился с кодом выхода 1
+2019-11-07 12:15:15.259 MSK   [2017]СООБЩЕНИЕ:  выключение
+2019-11-07 12:15:15.369 MSK   [2014]СООБЩЕНИЕ:  система БД выключена

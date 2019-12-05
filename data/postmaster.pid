@@ -1,8 +1,8 @@
-2014
-/home/petrenko/data
-1573113685
+2030
+/home/petrenko/RDBM/./data
+1575535632
 5432
 /var/run/postgresql
 localhost
-  5432001    163841
+  5432001     65536
 ready   

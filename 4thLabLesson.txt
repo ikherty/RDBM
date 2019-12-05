@@ -1,0 +1,77 @@
+petrenko@ismag07l:~/RDBM> pg_ctl -D ./data start
+ожидание запуска сервера....2019-12-05 11:47:12.393 MSK   [2030]СООБЩЕНИЕ:  для приёма подключений по адресу IPv6 "::1" открыт порт 5432
+2019-12-05 11:47:12.393 MSK   [2030]СООБЩЕНИЕ:  для приёма подключений по адресу IPv4 "127.0.0.1" открыт порт 5432
+2019-12-05 11:47:12.446 MSK   [2030]СООБЩЕНИЕ:  для приёма подключений открыт Unix-сокет "/var/run/postgresql/.s.PGSQL.5432"
+2019-12-05 11:47:12.560 MSK   [2030]СООБЩЕНИЕ:  для приёма подключений открыт Unix-сокет "/tmp/.s.PGSQL.5432"
+2019-12-05 11:47:12.615 MSK   [2030]СООБЩЕНИЕ:  передача вывода в протокол процессу сбора протоколов
+2019-12-05 11:47:12.615 MSK   [2030]ПОДСКАЗКА:  В дальнейшем протоколы будут выводиться в каталог "log".
+ готово
+сервер запущен
+petrenko@ismag07l:~/RDBM> psql 
+psql (10.6)
+Введите "help", чтобы получить справку.
+      
+petrenko=# \c test
+Вы подключены к базе данных "test" как пользователь "petrenko".
+test-# \d
+             Список отношений
+ Схема  |    Имя     |   Тип   | Владелец 
+--------+------------+---------+----------
+ public | customers  | таблица | sanaev
+ public | orderitems | таблица | sanaev
+ public | orders     | таблица | sanaev
+ public | products   | таблица | sanaev
+ public | vendors    | таблица | sanaev
+(5 строк)
+                                                           ^
+test=# select cust_id, count(*) from orders group by cust_id order by 2 desc;
+  cust_id   | count 
+------------+-------
+ 1000000001 |     2
+ 1000000003 |     1
+ 1000000005 |     1
+ 1000000004 |     1
+(4 строки)
+
+test=# select cust_name, count(*) from customers c, orders o where c.cust_id=o.cust_id group by cast_name order by 2 desc;
+ОШИБКА:  столбец "cast_name" не существует
+СТРОКА 1: ...rs c, orders o where c.cust_id=o.cust_id group by cast_name ...
+                                                               ^
+ПОДСКАЗКА:  Возможно, предполагалась ссылка на столбец "c.cust_name".
+test=# select cust_name, count(*) from customers c, orders o where c.cust_id=o.cust_id group by cust_name order by 2 desc;
+                     cust_name                      | count 
+----------------------------------------------------+-------
+ Village Toys                                       |     2
+ Fun4All                                            |     2
+ The Toy Store                                      |     1
+(3 строки)
+
+test=# select all cust_name, c.cust_id, count(*) from customers c, orders o where c.cust_id=o.cust_id group by c.cust_id order by 2 desc;
+                     cust_name                      |  cust_id   | count 
+----------------------------------------------------+------------+-------
+ The Toy Store                                      | 1000000005 |     1
+ Fun4All                                            | 1000000004 |     1
+ Fun4All                                            | 1000000003 |     1
+ Village Toys                                       | 1000000001 |     2
+(4 строки)
+
+test=# select  cust_name, c.cust_id, count(*) from customers c, orders o where c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
+                     cust_name                      |  cust_id   | count 
+----------------------------------------------------+------------+-------
+ Village Toys                                       | 1000000001 |     2
+ Fun4All                                            | 1000000003 |     1
+ The Toy Store                                      | 1000000005 |     1
+ Fun4All                                            | 1000000004 |     1
+(4 строки)
+
+test=# select cust_name, c.cust_id, count(*) from customers c left join orders o on c.cust_id=o.cust_id group by c.cust_id order by 3 desc;
+                     cust_name                      |  cust_id   | count 
+----------------------------------------------------+------------+-------
+ Village Toys                                       | 1000000001 |     2
+ Kids Place                                         | 1000000002 |     1
+ Fun4All                                            | 1000000003 |     1
+ The Toy Store                                      | 1000000005 |     1
+ Fun4All                                            | 1000000004 |     1
+(5 строк)
+
+
